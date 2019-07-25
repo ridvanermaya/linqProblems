@@ -8,7 +8,6 @@ namespace linqProblemsProject
 {
     class Program
     {
-        // Problem 1
         static void Main(string[] args)
         {
             // Problem 1
@@ -68,27 +67,33 @@ namespace linqProblemsProject
             
             var lettersInStr = orderByResult.Distinct();
 
-            string compressedStr = "";
-            string orderedStr = "";
+            string letters = "";
+            foreach (var item in lettersInStr)
+            {
+                letters += item.ToString();
+            }
 
+            string orderedStr = "";
             foreach (var item in orderByResult)
             {
                 orderedStr += item;
             }
 
-            for (int i = 0; i < orderedStr.Length; i++)
+            string compressedStr = "";
+
+            for (int i = 0; i < letters.Length; i++)
             {
-                int count = 1;
-                for (int j = 1; j < orderedStr.Length; j++)
+                int count = 0;
+                for (int j = 0; j < orderedStr.Length; j++)
                 {
-                    if (orderedStr[i] == orderedStr[j]) {
+                    if (letters[i] == orderedStr[j]) {
                         count++;
                     }
                 }
-                compressedStr += count + orderedStr[i];
+                compressedStr += count.ToString() + letters[i];
             }
 
-            Console.WriteLine(compressedStr);
+            Console.WriteLine(compressedStr.ToUpper());
         }
     }
 }
